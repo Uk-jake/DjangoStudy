@@ -25,11 +25,23 @@ SECRET_KEY = 'django-insecure-r2$l^j3u%+3pna-k4q$e-v)lntn1844f7u-#lz0r2yr1812ks7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    pass
+    # DEBUG 모드에서 실행할 코드
+else:
+    pass
+    # DEBUG 모드가 아닐 때 실행할 코드
+
+
+# 실제 배포될 컴퓨터의 IP 설정
+# default 값은 127.0.0.1
+# 클라우드 환경에 배포한다면 고정 IP를 설정해줘야 함
+# 모든 컴퓨터에서 접근 가능하게 한다면 *로 설정
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 사용할 패키지, 어픜리케이션을 등록하는 곳
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myweb' # myweb 앱을 추가
 ]
 
+# 웹 요청이 오기 전이나 온 후에 수행할 내용을 작성하는 곳
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
