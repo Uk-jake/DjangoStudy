@@ -12,7 +12,6 @@ def index(request):
     # 직접 태그를 생성해서 출력
     return HttpResponse("Hello, Django!")
 
-
 def htmlpage(request):
     return render(request, 'index.html', {'message': 'this is a message from views.py'})
 
@@ -62,7 +61,6 @@ def requestbody(request):
     
     return HttpResponse("이름 : " + user['name'] + ", 별명 : " + user['nickname'])
 
-
 def fileupload(request):
     # POST 방식으로 전달된 파일을 추출
     file = request.FILES['file']
@@ -83,3 +81,22 @@ def fileupload(request):
     upload_fileurl = fs.url(filename)
     
     return HttpResponse(f"변경된 파일 이름: {filename} 파일의 URL: {upload_fileurl}")
+
+# Cookie를 만드는 함수
+def setcookie(request):
+    # 쿠키 생성
+    response = HttpResponse("Cookie Set")
+    response.set_cookie('name', 'itstudy')
+    
+    request.session["nickname"] = "SW"
+    
+    return response
+
+# Cookie를 읽는 함수
+def getcookie(request):
+    # 쿠키 읽기
+    username = request.COOKIES.get('name', 'no_name')
+    
+    session = request.session.get('nickname', 'no_nickname')
+    
+    return HttpResponse("쿠키 name : " + username + ", 세션 nickname : " + session)

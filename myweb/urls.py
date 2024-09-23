@@ -18,5 +18,11 @@ urlpatterns = [
     
     # 파일 업로드를 처리하는 함수
     path('fileupload', views.fileupload),
+    
+    # Cookie를 만드는 함수
+    path('setcookie', views.setcookie),
+    
+    # Cookie를 읽는 함수
+    path('getcookie', views.getcookie)
 ]
  
