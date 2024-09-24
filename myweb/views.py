@@ -11,7 +11,7 @@ from myweb.models import Item
 
 
 # index 함수 정의
-def index(request):
+def getItems(request):
     
     # 조회 시간 출력
     print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
@@ -21,7 +21,16 @@ def index(request):
         print(i, i.itemid, i.itemname, i.price, i.description, i.pictureurl)
     
     # 직접 태그를 생성해서 출력
-    return render(request, 'index.html', {'data': data})
+    return render(request, 'showItems.html', {'data': data})
+
+# itemid를 파라미터로 받아서 출력하는 함수
+def getItemDetail(request, itemid):
+    
+    # itemid에 해당하는 데이터를 조회
+    item = Item.objects.get(itemid=itemid)
+    
+    #return HttpResponse(f"Item ID: {itemid}")
+    return HttpResponse(f"Item ID: {itemid}, Item Name: {item.itemname}, Price: {item.price}, Description: {item.description}, Picture URL: {item.pictureurl}")
 
 def htmlpage(request):
     return render(request, 'index.html', {'message': 'this is a message from views.py'})
@@ -31,9 +40,6 @@ def test(request):
 
 def showGetDescription(request):
     return render(request, 'show.html', {'message': 'this is a description page'})
-
-def getItem(request, itemid):
-    return HttpResponse(f"Item ID: {itemid}")
 
 # GET 방식의 queryString을 처리하는 함수
 def queryString(request):

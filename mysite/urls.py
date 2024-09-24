@@ -23,7 +23,7 @@ from myweb import views
 urlpatterns = [
     # admin 요청 시 admin.site.urls로 이동
     path('admin/', admin.site.urls),
-    path('', views.index), # 기본(루트) 요청 시 views.index로 이동
+    # path('', views.index), # 기본(루트) 요청 시 views.index로 이동
     path('htmlpage/', views.htmlpage),
     path('myweb/', include('myweb.urls')) # myweb/으로 시작하는 요청은 myweb.urls로 이동
 ]
