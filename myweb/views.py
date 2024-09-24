@@ -11,7 +11,7 @@ from myweb.models import Item
 
 
 # index 함수 정의
-def getItems(request):
+def showItems(request):
     
     # 조회 시간 출력
     print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
@@ -24,7 +24,7 @@ def getItems(request):
     return render(request, 'showItems.html', {'data': data})
 
 # itemid를 파라미터로 받아서 출력하는 함수
-def getItemDetail(request, itemid):
+def showItemDetail(request, itemid):
     
     # itemid에 해당하는 데이터를 조회
     item = Item.objects.get(itemid=itemid)

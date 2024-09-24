@@ -4,10 +4,10 @@ from . import views
 
 urlpatterns = [
     # /myweb의 index 페이지를 호출하는 URL
-    path("item", views.getItems),
+    path("item", views.showItems),
     
     # itemid를 파라미터로 받아서 출력하는 URL
-    path("item/<int:itemid>", views.getItemDetail),
+    path("item/<int:itemid>", views.showItemDetail),
     
     path("get", views.showGetDescription),
     #path("get/<str:itemid>", views.getItem),
