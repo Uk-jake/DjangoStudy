@@ -32,6 +32,49 @@ def showItemDetail(request, itemid):
     #return HttpResponse(f"Item ID: {itemid}")
     return HttpResponse(f"Item ID: {itemid}, Item Name: {item.itemname}, Price: {item.price}, Description: {item.description}, Picture URL: {item.pictureurl}")
 
+# item을 정보를 받아 DB에 저장하는 함수
+from django.db.models import Max
+from django.shortcuts import redirect
+
+def addItem(request):
+    item = Item()
+    
+    # dict 형태로 리턴하기 위해서 json.loads() 함수를 사용
+    # user = json.loads(request.body)
+    # return HttpResponse("이름 : " + user['name'] + ", 별명 : " + user['nickname'])
+
+    # itemid를 자동으로 생성하기 위해서 가장 큰 itemid를 조회
+    obj = Item.objects.aggregate(itemid = Max('itemid'))
+    if obj['itemid'] == None:
+        obj['itemid'] = 0
+    
+    item.itemid = obj['itemid'] + 1
+    
+    item.itemname = request.POST.get('itemname', 'no_name')
+    item.price = request.POST.get('price', 0)
+    item.description = request.POST.get('description', 'no_description')
+    item.pictureurl = request.POST.get('pictureurl', 'no_pictureurl')
+    
+    item.save()
+    
+    return redirect('/myweb/item')
+
+def updateItem(request, itemid):
+    item = Item.objects.get(itemid=itemid)
+    
+    item.itemname = "updatedName"
+    
+    item.save()
+    
+    return redirect('/myweb/item')
+
+def deleteItem(request, itemid):
+    item = Item.objects.get(itemid=itemid)
+    
+    item.delete()
+    
+    return redirect('/myweb/item')
+
 def htmlpage(request):
     return render(request, 'index.html', {'message': 'this is a message from views.py'})
 

@@ -9,6 +9,15 @@ urlpatterns = [
     # itemid를 파라미터로 받아서 출력하는 URL
     path("item/<int:itemid>", views.showItemDetail),
     
+    # item을 정보를 받아 DB에 저장하는 URL
+    path("item/add", views.addItem),
+    
+    # item 정보를 수정하는 URL
+    path("item/update/<int:itemid>", views.updateItem),
+    
+    # item 정보를 삭제하는 URL
+    path("item/delete/<int:itemid>", views.deleteItem),
+    
     path("get", views.showGetDescription),
     #path("get/<str:itemid>", views.getItem),
     
