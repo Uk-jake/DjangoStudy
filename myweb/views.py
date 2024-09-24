@@ -1,16 +1,27 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-import json
-
+from django.http import HttpResponse
 from django.core.files.storage import FileSystemStorage
+
+import time
+import json
 import uuid
 
-from django.http import HttpResponse
+from myweb.models import Item
+
 
 # index 함수 정의
 def index(request):
+    
+    # 조회 시간 출력
+    print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    
+    data = Item.objects.all()
+    for i in data:
+        print(i, i.itemid, i.itemname, i.price, i.description, i.pictureurl)
+    
     # 직접 태그를 생성해서 출력
-    return HttpResponse("Hello, Django!")
+    return render(request, 'index.html', {'data': data})
 
 def htmlpage(request):
     return render(request, 'index.html', {'message': 'this is a message from views.py'})

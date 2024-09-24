@@ -3,7 +3,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # /myweb의 index 페이지를 호출하는 URL
     path("", views.index),
+    
     path("get/", views.showGetDescription),
     path("get/<str:itemid>", views.getItem),
     

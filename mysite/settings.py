@@ -149,3 +149,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # 로컬에 파일을 업로드할 때 아래 경로로 이동
 MEDIAURL = '/media/'
 MDEIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 정적 파일을 저장할 디렉토리 설정
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )

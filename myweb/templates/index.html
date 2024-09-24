@@ -1,13 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Web</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Welcome to My Web</h1>
-    <p>This is the home page.</p>
-    <p>{{message}}</p>
+    <div align="center" class="body">
+        <h3>List</h3>
+        <table border="1">
+            <tr class="header">
+                <th align="center" width="80">ID</th>
+                <th align="center" width="320">Name</th>
+                <th align="center" width="100">Price</th>
+            </tr>
+            {% for item in data %}
+            <tr class="record">
+                <td align="center">{{ item.itemid }}</td>
+                <td align="center">{{ item.itemname }}</td>
+                <td align="center">{{ item.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
