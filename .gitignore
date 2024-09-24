@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# If you are using the local database
+db.sqlite3
+*.db
+
+# Ignore media/uploads
+media/
+
+# Ignore static files generated during collectstatic
+/staticfiles/
+
+# Environment variables
+.env
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# VSCode settings
+.vscode/
+
+# MacOS specific files
+.DS_Store
+
+# PyCharm settings
+.idea/
+
+# Ignore migrations (optional)
+myweb/migrations/
+
+# System specific files
+Thumbs.db
+
+# .env file
+.env
